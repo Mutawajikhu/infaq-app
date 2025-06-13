@@ -1,0 +1,124 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aplikasi Infaq Siswa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Menu Utama -->
+    <div id="home" class="menu">
+      <button onclick="navigate('input')">Input Pembayaran</button>
+      <button onclick="navigate('view')">View Rekap Pembayaran</button>
+      <button onclick="navigate('pengeluaran')">Pengeluaran</button>
+      <button onclick="navigate('rekap')">Rekap Keseluruhan</button>
+    </div>
+
+    <!-- Form Input Pembayaran -->
+    <div id="input" class="hidden">
+      <h2>Input Pembayaran</h2>
+      <form id="formPembayaran">
+        <label for="tanggal">Tanggal:</label>
+        <input type="date" id="tanggal" name="tanggal" required />
+	<label for="nama">Nama:</label>
+        <select id="nama" name="nama" required></select>
+        <label for="jumlah">Jumlah:</label>
+        <input type="number" id="jumlah" name="jumlah" required />
+        <button type="submit">Kirim</button>
+        <button type="reset">Reset</button>
+      </form>
+      <button onclick="navigate('home')">Home</button>
+    </div>
+
+    <!-- View Rekap Pembayaran -->
+    <div id="view" class="hidden">
+      <h2>Rekap Pembayaran</h2>
+      <table id="tabelRekap">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Total Bayar</th>
+            <th>Sisa Tagihan</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button onclick="navigate('home')">Home</button>
+    </div>
+
+    <!-- Form Pengeluaran -->
+    <div id="pengeluaran" class="hidden">
+      <h2>Input Pengeluaran</h2>
+      <form id="formPengeluaran">
+        <label for="tglPengeluaran">Tanggal:</label>
+        <input type="date" id="tglPengeluaran" name="tglPengeluaran" required />
+        <label for="jumlahPengeluaran">Jumlah:</label>
+        <input type="number" id="jumlahPengeluaran" name="jumlahPengeluaran" required />
+        <label for="penerima">Penerima:</label>
+	<input type="text" id="penerima" name="penerima" required />
+        <button type="submit">Simpan</button>
+      </form>
+      <h3>Rekap Pengeluaran</h3>
+      <table id="tabelPengeluaran">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Jumlah</th>
+            <th>Penerima</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">Total</td>
+            <td colspan="2" id="totalPengeluaran"></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button onclick="navigate('home')">Home</button>
+    </div>
+
+    <!-- Rekap Keseluruhan -->
+    <div id="rekap" class="hidden">
+      <h2>Rekap Keseluruhan</h2>
+      <div class="rekap-grid">
+        <div class="card">
+          <h3>Total Seharusnya</h3>
+          <p id="totalSeharusnya"></p>
+        </div>
+        <div class="card">
+          <h3>Total Dibayar</h3>
+          <p id="totalDibayar"></p>
+        </div>
+        <div class="card">
+          <h3>Sisa Belum Dibayar</h3>
+          <p id="sisaBelumDibayar"></p>
+        </div>
+        <div class="card">
+          <h3>Total Pengeluaran</h3>
+          <p id="totalPengeluaranRekap"></p>
+        </div>
+        <div class="card">
+          <h3>Saldo</h3>
+	  <p id="saldo"></p>
+        </div>
+        <div class="card">
+          <h3>Siswa Lunas</h3>
+          <p id="siswaLunas"></p>
+        </div>
+        <div class="card">
+          <h3>Siswa Belum Lunas</h3>
+          <p id="siswaBelumLunas"></p>
+        </div>
+      </div>
+      <button onclick="navigate('home')">Home</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
