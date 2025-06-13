@@ -1,4 +1,3 @@
-```javascript
 const API_URL = 'https://script.google.com/macros/s/AKfycbxAAmL1QPG1CvfwTiBPxYei1IbuVJhEbEdpvBqr85yO6V5nUmWokdGr8IKU7m2EK4u5/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -185,3 +184,18 @@ function loadPengeluaranTable() {
         <td colspan="2"><strong>{total}</strong></td>
       `;
       tbody.appendChild(trTotal);
+}
+
+function loadRekapData() {
+  fetch(`${API_URL}?action=getRekap`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('totalSeharusnya').textContent = data.totalSeharusnya;
+      document.getElementById('totalDibayar').textContent = data.totalDibayar;
+      document.getElementById('sisaBelumDibayar').textContent = data.sisaBelumDibayar;
+      document.getElementById('totalPengeluaranRekap').textContent = data.totalPengeluaran;
+      document.getElementById('saldo').textContent = data.saldo;
+      document.getElementById('siswaLunas').textContent = data.siswaLunas;
+      document.getElementById('siswaBelumLunas').textContent = data.siswaBelumLunas;
+    });
+}
